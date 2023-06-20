@@ -4,6 +4,7 @@ import os
 from transformers import AutoConfig as AC, AutoModelForCausalLM as AM
 from .mpt import MPTConfig, MPTForCausalLM
 from .rw import RWConfig, RWForCausalLM
+from .landmark import LlamaConfig, LlamaForCausalLM
 
 
 def load_json(path):
@@ -21,6 +22,8 @@ class AutoConfig():
                 return MPTConfig.from_pretrained(path, *args, **kwargs)
             if archs[0] == "RWForCausalLM":
                 return RWConfig.from_pretrained(path, *args, **kwargs)
+            if archs[0] == "LlamaForCausalLM":
+                return LlamaForCausalLM.from_pretrained(path, *args, **kwargs)
 
         return AC.from_pretrained(path, *args, **kwargs)
 
@@ -34,6 +37,9 @@ class AutoModelForCausalLM():
                 return MPTForCausalLM(config)
             if archs[0] == "RWForCausalLM":
                 return RWForCausalLM(config)
+            if archs[0] == "LlamaForCausalLM":
+                return LlamaForCausalLM(config)
+
 
         return AM.from_config(config, *args, **kwargs)
 
@@ -46,5 +52,8 @@ class AutoModelForCausalLM():
                 return MPTForCausalLM.from_pretrained(path, *args, **kwargs)
             if archs[0] == "RWForCausalLM":
                 return RWForCausalLM.from_pretrained(path, *args, **kwargs)
+            if archs[0] == "LlamaForCausalLM":
+                return LlamaForCausalLM.from_pretrained(path, *args, **kwargs)
+
 
         return AM.from_pretrained(path, *args, **kwargs)
