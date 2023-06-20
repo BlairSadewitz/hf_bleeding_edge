@@ -4,7 +4,7 @@ import os
 from transformers import AutoConfig as AC, AutoModelForCausalLM as AM
 from .mpt import MPTConfig, MPTForCausalLM
 from .rw import RWConfig, RWForCausalLM
-from .landmark import LlamaConfig, LlamaForCausalLM
+from .landmark_llama import LlamaConfig, LlamaForCausalLM
 
 
 def load_json(path):
